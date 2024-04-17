@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.34407.143
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "presentacion", "TPFinalNivel3_Ramos\presentacion.csproj", "{DE83A8A6-AC79-4752-A6B4-E7F5F5441CAE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "negocio", "negocio\negocio.csproj", "{A6230887-429B-43A9-971B-CBA6DC36B912}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dominio", "dominio\dominio.csproj", "{C1AC22E2-4624-47A1-815B-6C5BE0CE23C4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DE83A8A6-AC79-4752-A6B4-E7F5F5441CAE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE83A8A6-AC79-4752-A6B4-E7F5F5441CAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE83A8A6-AC79-4752-A6B4-E7F5F5441CAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE83A8A6-AC79-4752-A6B4-E7F5F5441CAE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A6230887-429B-43A9-971B-CBA6DC36B912}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A6230887-429B-43A9-971B-CBA6DC36B912}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A6230887-429B-43A9-971B-CBA6DC36B912}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A6230887-429B-43A9-971B-CBA6DC36B912}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C1AC22E2-4624-47A1-815B-6C5BE0CE23C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1AC22E2-4624-47A1-815B-6C5BE0CE23C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C1AC22E2-4624-47A1-815B-6C5BE0CE23C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C1AC22E2-4624-47A1-815B-6C5BE0CE23C4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {EDA6E725-A246-4CC7-93D2-6A173F3725BE}
+	EndGlobalSection
+EndGlobal
