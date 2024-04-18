@@ -132,10 +132,7 @@ namespace negocio
                 datos.setearParametros("id", producto.Id);
 
                 datos.ejecutarAccion();
-                
-                
-                
-                
+      
             }
             catch (Exception ex)
             {
@@ -144,10 +141,42 @@ namespace negocio
             }finally { datos.cerrarConexion();}
         } 
 
+        public Producto buscarPorId(int id)
+        {
+            ProductoNegocio negocio = new ProductoNegocio();
+            AccesoDatos datos = new AccesoDatos();
+            datos.setearConsulta("Select Codigo, Nombre, A.Descripcion, M.Descripcion Marca, C.Descripcion Categoria, A.IdMarca, A.IdCategoria, ImagenUrl Imagen, Precio from ARTICULOS A, CATEGORIAS C, MARCAS M Where A.id = @id AND C.Id = A.IdCategoria AND M.Id = A.IdMarca");
+            datos.setearParametros("id", id);
+            datos.ejecutarLectura();
+
+
+            Producto prod = new Producto();
+            while (datos.lector.Read())
+            {
+                prod.Id = id;
+                prod.Codigo = (string)datos.lector["Codigo"];
+                prod.Nombre = (string)datos.lector["Nombre"];
+                prod.Descripcion = (string)datos.lector["Descripcion"];
+
+                prod.Marca = new Marca();
+                prod.Marca.Descripcion = (string)datos.lector["Marca"];
+                prod.Marca.Id = (int)datos.lector["IdMarca"];
+
+                prod.Categoria = new Categoria();
+                prod.Categoria.Descripcion = (string)datos.lector["Categoria"];
+                prod.Categoria.Id = (int)datos.lector["IdCategoria"];
+
+                prod.urlImagen = (string)datos.lector["Imagen"];
+                prod.Precio = (decimal)datos.lector["Precio"];
+
+            }
+
+            return prod;
         }
 
-        
+        }
 
+  
  
     }
 

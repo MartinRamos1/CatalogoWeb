@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="TPFinalNivel3_Ramos.Default" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <script src="https://kit.fontawesome.com/1e6c0b5360.js" crossorigin="anonymous"></script>
+    
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
@@ -168,13 +168,13 @@
 
     <div class="row">
 
-        <%foreach (object prod in Lista)
+        <%foreach (dominio.Producto prod in Lista)
             {%>
 
         <div class="col-md-3 col-sm-6">
             <div class="product-grid">
                 <div class="product-image">
-                    <a href="#" class="image">
+                    <a href="Detalles.aspx?id=<%: prod.Id%>" class="image">
                         <img class="pic-1" src="https://www.rueducommerce.fr/media/produits/apple/apple-iphone-15-pro-max-6-7-5g-double-sim-1-to-blanc-titanium-3545068_1200x1200.jpeg">
                         <img class="pic-2" src="https://smartphonestorekenya.com/wp-content/uploads/2023/10/IPHONE-15.jpeg">
                     </a>
@@ -193,8 +193,8 @@
                         <li class="fa fa-star"></li>
                         <li class="far fa-star"></li>
                     </ul>
-                    <h3 class="title"><a href="#">Iphone 15 Pro Max</a></h3>
-                    <div class="price">$1500</div>
+                    <h3 class="title"><a href="Detalles.aspx?id=<%: prod.Id%>"><%: prod.Nombre%></a></h3>
+                    <div class="price">$<%: prod.Precio.ToString("0,0")%></div>
                 </div>
             </div>
         </div>
