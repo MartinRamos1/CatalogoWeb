@@ -16,23 +16,23 @@
                             <img style="max-width: 100%; max-height: 100vh; margin: auto;" class="rounded-4 fit" src="<%: producto.urlImagen%>" />
                         </a>
                     </div>
-                   <%-- <div class="d-flex justify-content-center mb-3">
-                        <a data-fslightbox="mygalley" class="border mx-1 rounded-2" target="_blank" data-type="image" href="https://mdbcdn.b-cdn.net/img/bootstrap-ecommerce/items/detail1/big1.webp" class="item-thumb">
-                            <img width="60" height="60" class="rounded-2" src="https://mdbcdn.b-cdn.net/img/bootstrap-ecommerce/items/detail1/big1.webp" />
+                    <div class="d-flex justify-content-center mb-3">
+                        <a data-fslightbox="mygalley" class="border mx-1 rounded-2 item-thumb" data-type="image" href="#" >
+                            <img width="60" height="60" class="rounded-2" src="<%: producto.urlImagen%>" />
                         </a>
-                        <a data-fslightbox="mygalley" class="border mx-1 rounded-2" target="_blank" data-type="image" href="https://mdbcdn.b-cdn.net/img/bootstrap-ecommerce/items/detail1/big2.webp" class="item-thumb">
-                            <img width="60" height="60" class="rounded-2" src="https://mdbcdn.b-cdn.net/img/bootstrap-ecommerce/items/detail1/big2.webp" />
+                        <a data-fslightbox="mygalley" class="border mx-1 rounded-2 item-thumb" data-type="image" href="#" >
+                            <img width="60" height="60" class="rounded-2" src="<%: producto.urlImagen%>" />
                         </a>
-                        <a data-fslightbox="mygalley" class="border mx-1 rounded-2" target="_blank" data-type="image" href="https://mdbcdn.b-cdn.net/img/bootstrap-ecommerce/items/detail1/big3.webp" class="item-thumb">
-                            <img width="60" height="60" class="rounded-2" src="https://mdbcdn.b-cdn.net/img/bootstrap-ecommerce/items/detail1/big3.webp" />
+                        <a data-fslightbox="mygalley" class="border mx-1 rounded-2 item-thumb" data-type="image" href="#" >
+                            <img width="60" height="60" class="rounded-2" src="<%: producto.urlImagen%>" />
                         </a>
-                        <a data-fslightbox="mygalley" class="border mx-1 rounded-2" target="_blank" data-type="image" href="https://mdbcdn.b-cdn.net/img/bootstrap-ecommerce/items/detail1/big4.webp" class="item-thumb">
-                            <img width="60" height="60" class="rounded-2" src="https://mdbcdn.b-cdn.net/img/bootstrap-ecommerce/items/detail1/big4.webp" />
+                        <a data-fslightbox="mygalley" class="border mx-1 rounded-2 item-thumb" data-type="image" href="#" >
+                            <img width="60" height="60" class="rounded-2" src="<%: producto.urlImagen%>" />
                         </a>
-                        <a data-fslightbox="mygalley" class="border mx-1 rounded-2" target="_blank" data-type="image" href="https://mdbcdn.b-cdn.net/img/bootstrap-ecommerce/items/detail1/big.webp" class="item-thumb">
-                            <img width="60" height="60" class="rounded-2" src="https://mdbcdn.b-cdn.net/img/bootstrap-ecommerce/items/detail1/big.webp" />
+                        <a data-fslightbox="mygalley" class="border mx-1 rounded-2 item-thumb" data-type="image" href="#" >
+                            <img width="60" height="60" class="rounded-2" src="<%: producto.urlImagen%>" />
                         </a>
-                    </div>--%>
+                    </div>
                     <!-- thumbs-wrap.// -->
                     <!-- gallery-wrap .end// -->
                 </aside>
@@ -58,7 +58,6 @@
 
                         <div class="mb-3">
                             <span class="h5">$<%: producto.Precio.ToString("0.00")%></span>
-                            <span class="text-muted">/per box</span>
                         </div>
 
                         <p>
@@ -173,7 +172,7 @@
                     <div class="px-0 border rounded-2 shadow-0">
                         <div class="card">
                             <div class="card-body">
-                                <h5 class="card-title">Similar items</h5>
+                                <h5 class="card-title">Te puede interesar</h5>
                                 <div class="d-flex mb-3">
                                     <a href="#" class="me-3">
                                         <img src="https://mdbcdn.b-cdn.net/img/bootstrap-ecommerce/items/8.webp" style="min-width: 96px; height: 96px;" class="img-md img-thumbnail" />
