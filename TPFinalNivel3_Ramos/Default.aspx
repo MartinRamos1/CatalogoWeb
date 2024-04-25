@@ -21,7 +21,7 @@
                             <div class="col-md-6 text-center">
                                 <img src="<%: prod.urlImagen%>"
                                     class="img-fluid rounded-start"
-                                    alt="...">
+                                    alt="<%: prod.Nombre%>">
                             </div>
                             <div class="col-md-6">
                                 <div class="card-body">
@@ -31,8 +31,8 @@
                                         <%: prod.Descripcion%> 
                                     </p>
                                     <p class="card-text">
-                                        <small class="text-muted">Last updated now
-                                        </small>
+                                        <asp:Button ID="btnCarrito" CssClass="btn btn-warning mb-2" runat="server" Text="Agregar al carrito" />
+                                        <a href="Detalles.aspx?id=<%: prod.Id%>" Class="btn btn-outline-primary">Ver más</a>
                                     </p>
                                 </div>
                             </div>

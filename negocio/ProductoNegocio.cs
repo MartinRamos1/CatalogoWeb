@@ -71,9 +71,7 @@ namespace negocio
                   datos.setearParametros("precio", prod.Precio);
 
                   datos.ejecutarAccion();
-                  lista.Add(prod);
-                  
-
+                  lista.Add(prod);                
              
             }
             catch (Exception ex)
@@ -86,7 +84,7 @@ namespace negocio
         }
 
 
-        public void eliminarProducto(Producto prod)
+        public void eliminarProducto(int id)
         {   
             
             try
@@ -94,7 +92,7 @@ namespace negocio
                 
                 {
                     datos.setearConsulta("Delete from ARTICULOS where Id = @id");
-                    datos.setearParametros("id", prod.Id);
+                    datos.setearParametros("id", id);
                     datos.ejecutarAccion();
                 }
                 
