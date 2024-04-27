@@ -5,7 +5,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
     <style>
-        x
+        
     </style>
 
 
@@ -27,8 +27,8 @@
                                 <div class="card-body">
                                     <h5 class="card-title"><%: prod.Nombre%>
                                     </h5>
-                                    <p class="card-text">
-                                        <%: prod.Descripcion%> 
+                                    <p class="card-text fw-bold">
+                                        $<%: prod.Precio.ToString("0.0")%> 
                                     </p>
                                     <p class="card-text">
                                         <asp:Button ID="btnCarrito" CssClass="btn btn-warning mb-2" runat="server" Text="Agregar al carrito" />

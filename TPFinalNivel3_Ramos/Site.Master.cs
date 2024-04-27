@@ -13,5 +13,13 @@ namespace TPFinalNivel3_Ramos
         {
 
         }
+
+        protected void btnCerrarSesion_Click(object sender, EventArgs e)
+        {
+            if(Session["user"] != null)
+            {
+                Session["user"] = null;
+            }
+        }
     }
 }

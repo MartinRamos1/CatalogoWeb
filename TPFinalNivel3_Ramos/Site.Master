@@ -42,20 +42,31 @@
                         <!-- Center elements -->
                         <div class="order-lg-last col-lg-5 col-sm-8 col-8">
                             <div class="d-flex float-end">
-                                
+
+                                <%if (Session["user"] == null)
+                                    {%>
                                 <a href="Login.aspx" class="me-1 border rounded py-1 px-3 nav-link d-flex align-items-center"><i class="fas fa-user-alt m-1 me-md-2"></i>
                                     <p class="d-none d-md-block mb-0">Login</p>
                                 </a>
+                                <%}
+                                    else
+                                    {%>
+                                    <asp:LinkButton ID="btnCerrarSesion" OnClick="btnCerrarSesion_Click" runat="server" CssClass="me-1 border rounded py-1 px-3 nav-link d-flex align-items-center"><i class="fas fa-user-alt m-1 me-md-2"></i>Cerrar sesión</asp:LinkButton>
+
                                 <a href="Wishlist.aspx" class="me-1 border rounded py-1 px-3 nav-link d-flex align-items-center"><i class="fas fa-heart m-1 me-md-2"></i>
                                     <p class="d-none d-md-block mb-0">Wishlist</p>
                                 </a>
+                                <%}%>
+                                <%if (negocio.UserNegocio.isAdmin((dominio.User)Session["user"]))
+                                    {%>
                                 <a href="Admin.aspx" class="me-1 border rounded py-1 px-3 nav-link d-flex align-items-center text-info"><i class="fas fa-user-alt m-1 me-md-2"></i>
                                     <p class="d-none d-md-block mb-0">Admin</p>
                                 </a>
+                                <%}%>
                                 <a href="Carrito.aspx" class="border rounded py-1 px-3 nav-link d-flex align-items-center"><i class="fas fa-shopping-cart m-1 me-md-2"></i>
                                     <p class="d-none d-md-block mb-0">My cart</p>
                                 </a>
-  
+
                             </div>
 
                         </div>
@@ -70,7 +81,7 @@
                                     <asp:TextBox ID="txtBuscar" type="search" class="form-control" runat="server"></asp:TextBox>
                                     <%--<label class="form-label" for="form">Search</label>--%>
                                 </div>
-                                <asp:Button ID="Button1" class="btn btn-primary shadow-0" runat="server" Text="Buscar" />
+                                <asp:Button ID="btnBuscar" class="btn btn-primary shadow-0" runat="server" Text="Buscar" />
 
                             </div>
                         </div>

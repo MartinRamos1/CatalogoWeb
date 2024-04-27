@@ -29,7 +29,7 @@
                                         <p>No tenes cuenta? Registrate</p>
                                         </a>
                                         <asp:Label ID="lblLoginError" class="mb-2 text-danger" runat="server" Text=""></asp:Label>
-                                        <asp:Button ID="btnLogIn" class="btn btn-lg btn-light border btn-login text-uppercase fw-bold mb-2" runat="server" Text="Iniciar sesión" />
+                                        <asp:Button ID="btnLogIn" OnClick="btnLogIn_Click" class="btn btn-lg btn-light border btn-login text-uppercase fw-bold mb-2" runat="server" Text="Iniciar sesión" />
                                     </div>
 
                                 </div>
