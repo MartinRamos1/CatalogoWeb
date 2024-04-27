@@ -13,7 +13,7 @@ namespace TPFinalNivel3_Ramos
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+
         }
 
         protected void btnLogIn_Click(object sender, EventArgs e)
@@ -26,15 +26,16 @@ namespace TPFinalNivel3_Ramos
                 login.Pass = txtPass.Text;
                 if (negocio.Login(login))
                 {
-                Session.Add("user", login);
-                Response.Redirect("Default.aspx");
+                    Session.Add("user", login);
+                    Session.Add("userId", login.Id);
+                    Response.Redirect("Default.aspx");
                 }
             }
             catch (Exception)
             {
-                
+
             }
-            
+
 
         }
     }

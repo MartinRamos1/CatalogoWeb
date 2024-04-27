@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using negocio;
+using dominio;
 
 namespace TPFinalNivel3_Ramos
 {
@@ -11,7 +13,9 @@ namespace TPFinalNivel3_Ramos
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if(Page is AgregarProducto && !UserNegocio.isAdmin((User)Session["user"])){
+                Response.Redirect("Login.aspx");
+            }
         }
 
         protected void btnCerrarSesion_Click(object sender, EventArgs e)
@@ -19,6 +23,7 @@ namespace TPFinalNivel3_Ramos
             if(Session["user"] != null)
             {
                 Session["user"] = null;
+                Response.Redirect("Default.aspx");
             }
         }
     }

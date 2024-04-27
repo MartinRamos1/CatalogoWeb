@@ -13,9 +13,16 @@ namespace TPFinalNivel3_Ramos
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            ProductoNegocio negocio = new ProductoNegocio();
-            dgvAdmin.DataSource = negocio.Listar();
-            dgvAdmin.DataBind();
+
+            if(UserNegocio.isAdmin((User)Session["user"]))
+            {
+                ProductoNegocio negocio = new ProductoNegocio();
+                dgvAdmin.DataSource = negocio.Listar();
+                dgvAdmin.DataBind();
+            }
+            else { Response.Redirect("Login.aspx"); }
+
+            
         }
 
         protected void dgvAdmin_SelectedIndexChanged(object sender, EventArgs e)

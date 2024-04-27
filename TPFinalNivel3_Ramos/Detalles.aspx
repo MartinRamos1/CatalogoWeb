@@ -91,7 +91,7 @@
                         </div>
                         <a href="#" class="btn btn-warning shadow-0">Comprar </a>
                         <a href="#" class="btn btn-primary shadow-0"><i class="me-1 fa fa-shopping-basket"></i>Agregar al carrito </a>
-                        <a href="#" class="btn btn-light border border-secondary py-2 icon-hover px-3"><i class="me-1 fa fa-heart fa-lg"></i>Guardar </a>
+                        <asp:LinkButton ID="btnFavorito" OnClick="btnFavorito_Click" runat="server" CssClass="btn btn-light border border-secondary py-2 icon-hover px-3"><i class="me-1 fa fa-heart fa-lg"></i></asp:LinkButton>
                     </div>
                 </main>
             </div>
