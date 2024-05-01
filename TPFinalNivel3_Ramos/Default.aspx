@@ -16,10 +16,10 @@
                     {%>
 
                 <div class="col">
-                    <div class="card mb-3" style="max-width: 540px;">
+                    <div class="card mb-3">
                         <div class="row g-0">
                             <div class="col-md-6 text-center">
-                                <img src="<%: prod.urlImagen%>"
+                                <img  src="<%: prod.urlImagen%>"
                                     class="img-fluid rounded-start"
                                     alt="<%: prod.Nombre%>">
                             </div>
@@ -27,7 +27,7 @@
                                 <div class="card-body">
                                     <h5 class="card-title"><%: prod.Nombre%>
                                     </h5>
-                                    <p class="card-text fw-bold">
+                                    <p class="card-text fw-bold fs-5">
                                         $<%: prod.Precio.ToString("0.0")%> 
                                     </p>
                                     <p class="card-text">

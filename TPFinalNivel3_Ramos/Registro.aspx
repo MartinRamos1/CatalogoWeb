@@ -9,9 +9,8 @@
                 <div class="card flex-row my-5 border-0 shadow rounded-3 overflow-hidden">
 
                     <div class="card-body p-4 p-sm-5">
-                        <h5 class="card-title text-center mb-5 fw-light fs-5">Registro</h5>
+                        <h5 class="card-title text-center mb-5 fw-light fs-2">Registro</h5>
                         <div>
-
                             <div class="form-floating mb-3">
                                 <asp:TextBox ID="txtEmail" type="email" class="form-control" placeholder="name@example.com" runat="server"></asp:TextBox>
                                 <label>Email</label>
@@ -31,7 +30,7 @@
 
                             <div class="d-grid mb-2">
                                 <asp:Label ID="lblErrorSignUp" CssClass="mb-1 text-danger" runat="server" Text=""></asp:Label>
-                                <asp:Button ID="btnSignUp" class="btn btn-lg btn-light border btn-login fw-bold text-uppercase" runat="server" Text="Registrarte" />
+                                <asp:Button ID="btnSignUp" OnClick="btnSignUp_Click" class="btn btn-lg btn-light border btn-login fw-bold text-uppercase" runat="server" Text="Registrarte" />
                             </div>
 
                             <a class="d-block text-center" href="Login.aspx">

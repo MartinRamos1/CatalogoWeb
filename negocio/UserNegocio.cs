@@ -33,11 +33,9 @@ namespace negocio
                         Usuario.TipoUsuario = 1;
                     else Usuario.TipoUsuario = 0;
 
-                    //if (datos.lector["ImagenPerfil"] != null)
-                    //    Usuario.ImagenPerfil = (string)datos.lector["imagenPerfil"];
-                    //else
-                    //    Usuario.ImagenPerfil = "XXX";
-
+                    //if (datos.lector["ImagenPerfil"] != DBNull.Value)
+                    //    Usuario.UrlImagenPerfil = (string)datos.lector["UrlImagenPerfil"];
+                    
                     return true;
                 }
 
@@ -154,7 +152,7 @@ namespace negocio
         {
             AccesoDatos datos = new AccesoDatos();
 
-            datos.setearConsulta("Update USERS set nombre = @nombre, apellido = @apellido, Where id = @id");
+            datos.setearConsulta("Update USERS set nombre = @nombre, apellido = @apellido Where id = @id");
 
             datos.setearParametros("nombre", usuario.Nombre);
             datos.setearParametros("apellido", usuario.Apellido);
