@@ -1,17 +1,14 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="TPFinalNivel3_Ramos.Default" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Favoritos.aspx.cs" Inherits="TPFinalNivel3_Ramos.Favoritos" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div class="row justify-content-center mt-4">
-        <div class="col-auto">
-            <asp:TextBox ID="txtBuscar" OnTextChanged="txtBuscar_TextChanged" CssClass="form-control" placeholder="Buscar" runat="server" />
-        </div>
-    </div>
+
     <div class="container m-4">
+            <h3 class="login-heading mb-4">Favoritos</h3>
         <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
 
-            <%foreach (dominio.Producto prod in Lista)
+            <%foreach (dominio.Producto prod in ListaFav)
                 {%>
 
             <div class="col">
@@ -32,17 +29,15 @@
                                 <p class="card-text">
                                     <a href="#" class="btn btn-lg btn-light border text-uppercase fw-bold mb-2 fs-5">Comprar</a>
                                     <a href="Detalles.aspx?id=<%: prod.Id%>" class="btn btn-outline-info border text-uppercase fw-bold">Ver más</a>
-
-
                                 </p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+
             <%}%>
         </div>
     </div>
 
-   
 </asp:Content>

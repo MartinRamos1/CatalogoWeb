@@ -4,11 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using dominio;
+using negocio;
+
 
 namespace negocio
 {
     public class FavoritoNegocio
     {
+
         public void agregarFavorito(Favorito fav)
         {
             AccesoDatos datos = new AccesoDatos();
@@ -60,8 +63,41 @@ namespace negocio
             datos.ejecutarAccion();
 
         }
-    }
 
+        public List<Producto> Listar(User user)
+        {
+            List<Producto> listaFav = new List<Producto>();
+            AccesoDatos datos = new AccesoDatos();
+
+            datos.setearConsulta("Select A.Id, A.Codigo, A.Nombre, A.Descripcion, A.IdMarca, M.Descripcion Marca, A.IdCategoria, C.Descripcion Categoria, A.Precio, A.ImagenUrl from ARTICULOS A, FAVORITOS F, MARCAS M, CATEGORIAS C Where A.Id = F.IdArticulo AND F.IdUser = @IdUser AND M.Id = A.IdMarca AND C.Id = A.IdCategoria");
+            datos.setearParametros("IdUser", user.Id);
+            datos.ejecutarLectura();
+
+            while (datos.lector.Read())
+            {
+                Producto aux = new Producto();
+                aux.Id = (int)datos.lector["Id"];
+                aux.Codigo = (string)datos.lector["Codigo"];
+                aux.Nombre = (string)datos.lector["Nombre"];
+                aux.Descripcion = (string)datos.lector["Descripcion"];
+                aux.Marca = new Marca();
+                aux.Marca.Descripcion = (string)datos.lector["Marca"];
+                aux.Marca.Id = (int)datos.lector["idMarca"];
+                aux.Categoria = new Categoria();
+                aux.Categoria.Descripcion = (string)datos.lector["Categoria"];
+                aux.Categoria.Id = (int)datos.lector["idCategoria"];
+                aux.urlImagen = (string)datos.lector["ImagenUrl"];
+                aux.Precio = (decimal)datos.lector["Precio"];
+
+                listaFav.Add(aux);
+            }
+                return listaFav;
+
+        }
+
+    }
 }
+
+    
 
     

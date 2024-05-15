@@ -15,6 +15,7 @@
 
                                 <!-- Sign In Form -->
                                 <div>
+                                    <a href="Favoritos.aspx" class ="btn btn-lg btn-login text-uppercase fw-bold mb-2 text-danger"> Mis favoritos</a>
                                     <asp:Label ID="admin" CssClass="text-danger fs-5" runat="server" Text=""></asp:Label>
                                     <div class="form-floating mb-3">
                                         <asp:TextBox ID="txtEmail" CssClass="form-control" runat="server"></asp:TextBox>
@@ -22,12 +23,12 @@
                                     </div>
 
                                     <div class="form-floating mb-3">
-                                        <asp:TextBox ID="txtNombre" CssClass="form-control" runat="server"></asp:TextBox>
+                                        <asp:TextBox ID="txtNombre" CssClass="form-control" runat="server" required="true"></asp:TextBox>
                                         <label>Nombre</label>
                                     </div>
 
                                     <div class="form-floating mb-3">
-                                        <asp:TextBox ID="txtApellido" CssClass="form-control" runat="server"></asp:TextBox>
+                                        <asp:TextBox ID="txtApellido" CssClass="form-control" runat="server" required="true"></asp:TextBox>
                                         <label>Apellido</label>
                                     </div>
 

@@ -14,19 +14,16 @@ namespace negocio
     public class ProductoNegocio
     {
         public List<Producto> lista = new List<Producto>();
-        //SqlConnection conexion = new SqlConnection();
-        //SqlCommand comando = new SqlCommand();
-        //SqlDataReader lector;
         AccesoDatos datos = new AccesoDatos();
 
-       public List<Producto> Listar()
+        public List<Producto> Listar()
         {
             try
             {
-                datos.setearConsulta("Select A.Id, A.Codigo,A.Nombre, A.Descripcion Descripción, A.ImagenUrl, M.Descripcion Marca, C.Descripcion Categoría, M.Id idMarca, C.Id idCategoria, Precio From ARTICULOS A, MARCAS M, CATEGORIAS C Where M.Id = A.IdMarca AND A.IdCategoria = C.Id");          
+                datos.setearConsulta("Select A.Id, A.Codigo,A.Nombre, A.Descripcion Descripción, A.ImagenUrl, M.Descripcion Marca, C.Descripcion Categoría, M.Id idMarca, C.Id idCategoria, Precio From ARTICULOS A, MARCAS M, CATEGORIAS C Where M.Id = A.IdMarca AND A.IdCategoria = C.Id");
                 datos.ejecutarLectura();
 
-                while(datos.lector.Read())
+                while (datos.lector.Read())
                 {
                     Producto aux = new Producto();
                     aux.Id = (int)datos.lector["Id"];
@@ -39,7 +36,9 @@ namespace negocio
                     aux.Categoria = new Categoria();
                     aux.Categoria.Descripcion = (string)datos.lector["Categoría"];
                     aux.Categoria.Id = (int)datos.lector["idCategoria"];
-                    aux.urlImagen = (string)datos.lector["ImagenUrl"];
+                    if (!(datos.lector["ImagenUrl"] is DBNull))
+                        aux.urlImagen = (string)datos.lector["ImagenUrl"];
+
                     aux.Precio = (decimal)datos.lector["Precio"];
 
                     lista.Add(aux);
@@ -53,49 +52,49 @@ namespace negocio
 
                 throw ex;
             }
-            
+
         }
-        
-       public void agregarProducto(Producto prod)
+
+        public void agregarProducto(Producto prod)
         {
             //AccesoDatos datos = new AccesoDatos();
             try
-            {   
-                  datos.setearConsulta("Insert into ARTICULOS values (@codigo,@nombre,@descripcion,@idMarca,@idCategoria,@urlImagen,@precio)");
-                  datos.setearParametros("codigo", prod.Codigo);
-                  datos.setearParametros("nombre", prod.Nombre);
-                  datos.setearParametros("descripcion", prod.Descripcion);
-                  datos.setearParametros("idMarca", prod.Marca.Id);
-                  datos.setearParametros("IdCategoria", prod.Categoria.Id);
-                  datos.setearParametros("urlImagen", prod.urlImagen);
-                  datos.setearParametros("precio", prod.Precio);
+            {
+                datos.setearConsulta("Insert into ARTICULOS values (@codigo,@nombre,@descripcion,@idMarca,@idCategoria,@urlImagen,@precio)");
+                datos.setearParametros("codigo", prod.Codigo);
+                datos.setearParametros("nombre", prod.Nombre);
+                datos.setearParametros("descripcion", prod.Descripcion);
+                datos.setearParametros("idMarca", prod.Marca.Id);
+                datos.setearParametros("IdCategoria", prod.Categoria.Id);
+                datos.setearParametros("urlImagen", prod.urlImagen);
+                datos.setearParametros("precio", prod.Precio);
 
-                  datos.ejecutarAccion();
-                  lista.Add(prod);                
-             
+                datos.ejecutarAccion();
+                lista.Add(prod);
+
             }
             catch (Exception ex)
             {
 
                 throw ex;
             }
-            finally { datos.cerrarConexion();}
+            finally { datos.cerrarConexion(); }
 
         }
 
 
         public void eliminarProducto(int id)
-        {   
-            
+        {
+
             try
             {
-                
+
                 {
                     datos.setearConsulta("Delete from ARTICULOS where Id = @id");
                     datos.setearParametros("id", id);
                     datos.ejecutarAccion();
                 }
-                
+
 
             }
             catch (Exception ex)
@@ -110,8 +109,8 @@ namespace negocio
 
         }
 
-           public void modificarProducto(Producto producto)
-            {
+        public void modificarProducto(Producto producto)
+        {
             try
             {
                 datos.setearConsulta("Update ARTICULOS set Codigo = @codigo , Nombre = @nombre, Descripcion = @descripcion, IdMarca = @idMarca, IdCategoria = @idCategoria, ImagenUrl = @url, Precio = @precio Where Id = @id");
@@ -120,24 +119,25 @@ namespace negocio
                 datos.setearParametros("descripcion", producto.Descripcion);
                 datos.setearParametros("idMarca", producto.Marca.Id);
                 datos.setearParametros("idCategoria", producto.Categoria.Id);
-                
+
 
                 if (producto.urlImagen != null)
-                datos.setearParametros("url", producto.urlImagen);
+                    datos.setearParametros("url", producto.urlImagen);
                 else datos.setearParametros("url", " ");
 
                 datos.setearParametros("precio", producto.Precio);
                 datos.setearParametros("id", producto.Id);
 
                 datos.ejecutarAccion();
-      
+
             }
             catch (Exception ex)
             {
 
                 throw ex;
-            }finally { datos.cerrarConexion();}
-        } 
+            }
+            finally { datos.cerrarConexion(); }
+        }
 
         public Producto buscarPorId(int id)
         {
@@ -172,9 +172,136 @@ namespace negocio
             return prod;
         }
 
+
+
+        public List<Producto> Filtrar(string campo, string criterio, string filtro)
+        {
+            List<Producto> lista = new List<Producto>();
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                string consulta = "Select Codigo, Nombre,A.Descripcion as Detalle, ImagenUrl as UrlImagen, Precio , C.Descripcion as Categoria, M.Descripcion as Marcas, A.IdMarca, A.IdCategoria, A.Id from ARTICULOS A,CATEGORIAS C, MARCAS M where C.Id = A.IdCategoria and M.Id = A.IdMarca AND ";
+                switch (campo)
+                {
+                    case "Precio":
+                        switch (criterio)
+                        {
+                            case "Mayor a":
+                                consulta += "Precio > " + filtro;
+                                break;
+                            case "Menor a":
+                                consulta += "Precio < " + filtro;
+                                break;
+                            case "Igual a":
+                                consulta += "Precio = " + filtro;
+                                break;
+                        }
+                        break;
+                    case "Nombre":
+                        switch (criterio)
+                        {
+                            case "Comienza con":
+                                consulta += "Nombre like '" + filtro + "%'";
+                                break;
+                            case "Termina con":
+                                consulta += "Nombre like '%" + filtro + "'";
+                                break;
+                            case "Contiene":
+                                consulta += "Nombre like '%" + filtro + "%'";
+                                break;
+                        }
+                        break;
+                    case "Código":
+                        switch (criterio)
+                        {
+                            case "Comienza con":
+                                consulta += "Codigo like '" + filtro + "%'";
+                                break;
+                            case "Termina con":
+                                consulta += "Codigo like '%" + filtro + "'";
+                                break;
+                            case "Contiene":
+                                consulta += "Codigo like '%" + filtro + "%'";
+                                break;
+                        }
+                        break;
+                    case "Descripcion":
+                        switch (criterio)
+                        {
+                            case "Comienza con":
+                                consulta += "A.Descripcion like '" + filtro + "%'";
+                                break;
+                            case "Termina con":
+                                consulta += "A.Descripcion like '%" + filtro + "'";
+                                break;
+                            case "Contiene":
+                                consulta += "A.Descripcion like '%" + filtro + "%'";
+                                break;
+                        }
+                        break;
+                    case "Categoria":
+                        switch (criterio)
+                        {
+                            case "Comienza con":
+                                consulta += "C.Descripcion like '" + filtro + "%'";
+                                break;
+                            case "Termina con":
+                                consulta += "C.Descripcion like '%" + filtro + "'";
+                                break;
+                            case "Contiene":
+                                consulta += "C.Descripcion like '%" + filtro + "%'";
+                                break;
+                        }
+                        break;
+                    case "Marcas":
+                        switch (criterio)
+                        {
+                            case "Comienza con":
+                                consulta += "M.Descripcion like '" + filtro + "%'";
+                                break;
+                            case "Termina con":
+                                consulta += "M.Descripcion like '%" + filtro + "'";
+                                break;
+                            case "Contiene":
+                                consulta += "M.Descripcion like '%" + filtro + "%'";
+                                break;
+                        }
+                        break;
+                }
+                datos.setearConsulta(consulta);
+                datos.ejecutarLectura();
+                while (datos.lector.Read())
+                {
+                    Producto aux = new Producto();
+
+                    aux.Id = (int)datos.lector["Id"];
+                    aux.Codigo = (string)datos.lector["Codigo"];
+                    aux.Nombre = (string)datos.lector["Nombre"];
+                    aux.Descripcion = (string)datos.lector["Detalle"];
+                    aux.urlImagen = (string)datos.lector["UrlImagen"];
+                    aux.Precio = (Decimal)datos.lector["Precio"];
+                    aux.Categoria = new Categoria();
+                    aux.Categoria.Id = (int)datos.lector["IdCategoria"];
+                    aux.Categoria.Descripcion = (string)datos.lector["Categoria"];
+                    aux.Marca = new Marca();
+                    aux.Marca.Id = (int)datos.lector["IdMarca"];
+                    aux.Marca.Descripcion = (string)datos.lector["Marcas"];
+
+
+                    lista.Add(aux);
+                }
+
+                return lista;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
-  
- 
     }
+
+
+
+}
 

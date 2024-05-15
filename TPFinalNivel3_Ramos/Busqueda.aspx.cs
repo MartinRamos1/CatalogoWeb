@@ -4,26 +4,27 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using negocio;
 using dominio;
+using negocio;
 
 namespace TPFinalNivel3_Ramos
 {
-    public partial class Default : System.Web.UI.Page
+    public partial class Busqueda : System.Web.UI.Page
     {
-        public List<Producto> Lista { get; set; }
-
+        public List<Producto> ListaFiltrada { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
-            ProductoNegocio negocio = new ProductoNegocio();
-            Lista = negocio.Listar();
-            Session.Add("lista", Lista);
+            if(Session["listaFiltrada"] != null)
+            {
+                ListaFiltrada = (List<Producto>)Session["listaFiltrada"];
+            }
+            else { Response.Redirect("Default.aspx"); }
         }
 
         protected void txtBuscar_TextChanged(object sender, EventArgs e)
         {
             ProductoNegocio negocio = new ProductoNegocio();
-            Lista = (List<Producto>)Session["lista"];
+            List<Producto> Lista = (List<Producto>)Session["lista"];
             List<Producto> listaFiltrada = Lista.FindAll(x => x.Nombre.ToUpper().Contains(txtBuscar.Text.ToUpper()));
             Session.Add("listaFiltrada", listaFiltrada);
             Response.Redirect("Busqueda.aspx");

@@ -69,8 +69,11 @@
   <ItemGroup>
     <Content Include="Admin.aspx" />
     <Content Include="AgregarProducto.aspx" />
+    <Content Include="Busqueda.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="Detalles.aspx" />
+    <Content Include="Error.aspx" />
+    <Content Include="Favoritos.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Login.aspx" />
     <Content Include="MiPerfil.aspx" />
@@ -93,6 +96,13 @@
     <Compile Include="AgregarProducto.aspx.designer.cs">
       <DependentUpon>AgregarProducto.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Busqueda.aspx.cs">
+      <DependentUpon>Busqueda.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Busqueda.aspx.designer.cs">
+      <DependentUpon>Busqueda.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -106,6 +116,20 @@
     </Compile>
     <Compile Include="Detalles.aspx.designer.cs">
       <DependentUpon>Detalles.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Error.aspx.cs">
+      <DependentUpon>Error.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Error.aspx.designer.cs">
+      <DependentUpon>Error.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Favoritos.aspx.cs">
+      <DependentUpon>Favoritos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Favoritos.aspx.designer.cs">
+      <DependentUpon>Favoritos.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

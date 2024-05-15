@@ -26,5 +26,10 @@ namespace TPFinalNivel3_Ramos
                 Response.Redirect("Default.aspx");
             }
         }
+
+        protected void btnBuscar_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -13,7 +13,7 @@ namespace TPFinalNivel3_Ramos
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(Session["user"] != null)
+            if (Session["user"] != null)
             {
                 Response.Redirect("Login.aspx");
             }
@@ -25,14 +25,26 @@ namespace TPFinalNivel3_Ramos
             User nuevoUser = new User();
             try
             {
+                // VALIDACIONES
+                Page.Validate();
+                if (!Page.IsValid)
+                    return;
+
                 nuevoUser.Email = txtEmail.Text;
                 nuevoUser.Pass = txtPass.Text;
-                if (negocio.noExisteEmail(nuevoUser) && (nuevoUser.Pass == txtPassConfirm.Text))
+
+                // VALIDAR TEXTO VACIO
+                if (!string.IsNullOrEmpty(txtEmail.Text) || !string.IsNullOrEmpty(txtPass.Text))
                 {
-                    negocio.SignUp(nuevoUser);
-                    Session.Add("user", nuevoUser);
-                    Response.Redirect("Default.aspx");
+                    // VALIDAR SI EXISTE MAIL Y SI COINCIDE LA PASS
+                    if (negocio.noExisteEmail(nuevoUser) && (nuevoUser.Pass == txtPassConfirm.Text))
+                    {
+                        negocio.SignUp(nuevoUser);
+                        Session.Add("user", nuevoUser);
+                        Response.Redirect("Default.aspx");
+                    }
                 }
+
             }
             catch (Exception)
             {

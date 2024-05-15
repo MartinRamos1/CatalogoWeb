@@ -16,12 +16,14 @@
                                 <!-- Sign In Form -->
                                 <div>
                                     <div class="form-floating mb-3">
-                                        <asp:TextBox ID="txtEmail" cssclass="form-control" placeholder="name@example.com" runat="server"></asp:TextBox>
+                                        <asp:TextBox ID="txtEmail" cssclass="form-control" type="email" placeholder="name@example.com" runat="server"></asp:TextBox>
                                         <label for="floatingInput">Email</label>
+                                        <asp:RequiredFieldValidator ErrorMessage="El email es requerido" ControlToValidate="txtEmail" runat="server" />
                                     </div>
                                     <div class="form-floating mb-3">
                                         <asp:TextBox ID="txtPass" type="password" cssclass="form-control" placeholder="Contraseña" runat="server"></asp:TextBox>
                                         <label for="floatingPassword">Contraseña</label>
+                                        <asp:RequiredFieldValidator ErrorMessage="La contraseña es requerida" ControlToValidate="txtPass" runat="server" />
                                     </div>
 
                                     <div class="d-grid">

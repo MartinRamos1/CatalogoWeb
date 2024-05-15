@@ -1,30 +1,27 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="AgregarProducto.aspx.cs" Inherits="TPFinalNivel3_Ramos.AgregarProducto" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="mb-3">
         <div class="col-4">
             <div class="row m-lg-2">
                 <div>
+                    <h1 class="fs-3">Nuevo</h1>
+                    <asp:TextBox ID="txtId" CssClass="form-control mt-4" runat="server" placeholder="ID"></asp:TextBox>
 
-                    <asp:Label ID="lblId" CssClass="form-label" runat="server" Text="ID"></asp:Label>
-                    <asp:TextBox ID="txtId" CssClass="form-control" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="txtNombre" CssClass="form-control mt-4" runat="server" placeholder="Nombre"></asp:TextBox>
+                    <asp:RequiredFieldValidator ErrorMessage="El nombre es requerido" ControlToValidate="txtNombre" runat="server" />
 
-                    <label>Nombre</label>
-                    <asp:TextBox ID="txtNombre" CssClass="form-control" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="txtCodigo" CssClass="form-control" runat="server" placeholder="Código"></asp:TextBox>
 
-                    <label>Código</label>
-                    <asp:TextBox ID="txtCodigo" CssClass="form-control" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="txtPrecio" CssClass="form-control mt-4" runat="server" placeholder="Precio"></asp:TextBox>
+                    <asp:RequiredFieldValidator ErrorMessage="El precio es requerido" ControlToValidate="txtPrecio" runat="server" />
 
-                    <label>Precio</label>
-                    <asp:TextBox ID="txtPrecio" CssClass="form-control" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="txtDescripcion" CssClass="form-control" runat="server" placeholder="Descripción"></asp:TextBox>
 
-                    <label>Descripción</label>
-                    <asp:TextBox ID="txtDescripcion" CssClass="form-control" runat="server"></asp:TextBox>
-
-                    <label>Imagen</label>
-                    <asp:TextBox ID="txtImagen" CssClass="form-control" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="txtImagen" CssClass="form-control mt-4" runat="server" placeholder="Imagen"></asp:TextBox>
 
                 </div>
 

@@ -11,7 +11,7 @@ namespace TPFinalNivel3_Ramos
 {
 
 
-    public partial class Default
+    public partial class Busqueda
     {
 
         /// <summary>

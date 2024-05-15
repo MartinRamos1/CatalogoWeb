@@ -1,8 +1,9 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="TPFinalNivel3_Ramos.Default" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Busqueda.aspx.cs" Inherits="TPFinalNivel3_Ramos.Busqueda" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+
     <div class="row justify-content-center mt-4">
         <div class="col-auto">
             <asp:TextBox ID="txtBuscar" OnTextChanged="txtBuscar_TextChanged" CssClass="form-control" placeholder="Buscar" runat="server" />
@@ -11,7 +12,7 @@
     <div class="container m-4">
         <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
 
-            <%foreach (dominio.Producto prod in Lista)
+            <%foreach (dominio.Producto prod in ListaFiltrada)
                 {%>
 
             <div class="col">
@@ -44,5 +45,4 @@
         </div>
     </div>
 
-   
 </asp:Content>

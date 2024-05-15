@@ -14,6 +14,7 @@
                             <div class="form-floating mb-3">
                                 <asp:TextBox ID="txtEmail" type="email" class="form-control" placeholder="name@example.com" runat="server"></asp:TextBox>
                                 <label>Email</label>
+                                <asp:RequiredFieldValidator ErrorMessage="El email es requerido" ControlToValidate="txtEmail" runat="server" />
                             </div>
 
                             <hr>
@@ -21,11 +22,13 @@
                             <div class="form-floating mb-3">
                                 <asp:TextBox ID="txtPass" type="password" class="form-control" placeholder="Password" runat="server"></asp:TextBox>
                                 <label>Contraseña</label>
+                                <asp:RequiredFieldValidator ErrorMessage="La contraseña es requerida" ControlToValidate="txtPass" runat="server" />
                             </div>
 
                             <div class="form-floating mb-3">
                                 <asp:TextBox ID="txtPassConfirm" type="password" class="form-control" placeholder="Confirm Password" runat="server"></asp:TextBox>
                                 <label>Confirmar Contraseña</label>
+                                <asp:RequiredFieldValidator ErrorMessage="Confirmar la contraseña" ControlToValidate="txtPassConfirm" runat="server" />
                             </div>
 
                             <div class="d-grid mb-2">

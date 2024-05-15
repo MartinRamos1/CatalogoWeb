@@ -19,10 +19,11 @@ namespace TPFinalNivel3_Ramos
             {
                 UserNegocio negocio = new UserNegocio();
                 User usuario = (User)Session["user"];
-                //usuario = negocio.buscarUser(usuario.Email, usuario.Pass);
                 txtEmail.Enabled = false;
+
                 if (!IsPostBack)
                 {
+                    // COMPLETAR CAMPOS CON USER EN SESIÓN
                     txtEmail.Text = usuario.Email;
                     txtNombre.Text = usuario.Nombre;
                     txtApellido.Text = usuario.Apellido;
@@ -34,8 +35,15 @@ namespace TPFinalNivel3_Ramos
         {
             try
             {
+                // VALIDACIONES
+                Page.Validate();
+                if (!Page.IsValid)
+                    return;
+
+                // VALIDAR TEXTO VACIO
                 if (txtNombre.Text != "" && txtApellido.Text != "")
                 {
+                    // UPDATE EN DB
                     UserNegocio negocio = new UserNegocio();
                     User user = (User)Session["user"];
                     user.Nombre = txtNombre.Text;

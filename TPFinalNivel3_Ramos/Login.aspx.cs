@@ -20,15 +20,26 @@ namespace TPFinalNivel3_Ramos
         {
             try
             {
+                // VALIDACIONES
+                Page.Validate();
+                if (!Page.IsValid)
+                    return;
+
                 User login = new User();
                 UserNegocio negocio = new UserNegocio();
                 login.Email = txtEmail.Text;
                 login.Pass = txtPass.Text;
-                if (negocio.Login(login))
+
+                // VALIDAR TEXTO VACIO
+                if (!string.IsNullOrEmpty(txtEmail.Text) || !string.IsNullOrEmpty(txtPass.Text))
                 {
-                    Session.Add("user", login);
-                    Session.Add("userId", login.Id);
-                    Response.Redirect("Default.aspx");
+                    if (negocio.Login(login))
+                    {
+                        Session.Add("user", login);
+                        Session.Add("userId", login.Id);
+                        Response.Redirect("Default.aspx");
+                    }
+
                 }
             }
             catch (Exception)
