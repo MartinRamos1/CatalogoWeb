@@ -14,7 +14,7 @@ namespace TPFinalNivel3_Ramos
         protected void Page_Load(object sender, EventArgs e)
         {
 
-            if(UserNegocio.isAdmin((User)Session["user"]))
+            if (UserNegocio.isAdmin((User)Session["user"]))
             {
                 ProductoNegocio negocio = new ProductoNegocio();
                 Session.Add("lista", negocio.Listar());
@@ -43,7 +43,7 @@ namespace TPFinalNivel3_Ramos
         protected void ddlCampo_SelectedIndexChanged(object sender, EventArgs e)
         {
             ddlCriterio.Items.Clear();
-            if(ddlCampo.SelectedValue.ToString() != "Precio")
+            if (ddlCampo.SelectedValue.ToString() != "Precio")
             {
                 ddlCriterio.Items.Add("Comienza con");
                 ddlCriterio.Items.Add("Termina con");
@@ -59,9 +59,20 @@ namespace TPFinalNivel3_Ramos
 
         protected void btnBuscar_Click(object sender, EventArgs e)
         {
-            ProductoNegocio negocio = new ProductoNegocio();
-            dgvAdmin.DataSource = negocio.Filtrar(ddlCampo.SelectedValue.ToString(), ddlCriterio.SelectedValue.ToString(),txtFiltro.Text); 
-            dgvAdmin.DataBind();
+            try
+            {
+                if (txtFiltro.Text != "")
+                {
+                    ProductoNegocio negocio = new ProductoNegocio();
+                    dgvAdmin.DataSource = negocio.Filtrar(ddlCampo.SelectedValue.ToString(), ddlCriterio.SelectedValue.ToString(), txtFiltro.Text);
+                    dgvAdmin.DataBind();
+
+                }else { Response.Redirect("Admin.aspx"); }
+            }
+            catch (Exception)
+            {
+
+            }
         }
     }
 }
