@@ -20,17 +20,21 @@ namespace TPFinalNivel3_Ramos
             // CARGAR DROPDOWN LIST CON BASE DE DATOS
             try
             {
-                MarcaNegocio mnegocio = new MarcaNegocio();
-                ddlMarca.DataValueField = "Id";
-                ddlMarca.DataTextField = "Descripcion";
-                ddlMarca.DataSource = mnegocio.Listar();
-                ddlMarca.DataBind();
+                if (!IsPostBack)
+                {
 
-                CategoriaNegocio cnegocio = new CategoriaNegocio();
-                ddlCategoria.DataValueField = "Id";
-                ddlCategoria.DataTextField = "Descripcion";
-                ddlCategoria.DataSource = cnegocio.Listar();
-                ddlCategoria.DataBind();
+                    MarcaNegocio mnegocio = new MarcaNegocio();
+                    ddlMarca.DataValueField = "Id";
+                    ddlMarca.DataTextField = "Descripcion";
+                    ddlMarca.DataSource = mnegocio.Listar();
+                    ddlMarca.DataBind();
+
+                    CategoriaNegocio cnegocio = new CategoriaNegocio();
+                    ddlCategoria.DataValueField = "Id";
+                    ddlCategoria.DataTextField = "Descripcion";
+                    ddlCategoria.DataSource = cnegocio.Listar();
+                    ddlCategoria.DataBind();
+                }
             }
             catch (Exception)
             {
